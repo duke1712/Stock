@@ -8,16 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.pritesh.stock.Model.Stocks;
 import com.pritesh.stock.R;
 import com.pritesh.stock.utils.Constants;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Menu extends AppCompatActivity {
     TextView start;
@@ -37,6 +32,7 @@ public class Menu extends AppCompatActivity {
             startGame.setFlags(1);
             startGame.putExtra("NAME",name.getText().toString());
             startActivity(startGame);
+            finish();
         }
         else
         {
@@ -45,27 +41,25 @@ public class Menu extends AppCompatActivity {
 
     }
     public void reset(View view){
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                dataSnapshot.child(Constants.GAME_ID).child(Constants.PLAYERS).getRef().setValue(null);
-                Map<String,Object> change=new HashMap<String, Object>();
-                change.put(Constants.HUL,"200000");
-                change.put(Constants.ITC,"200000");
-                change.put(Constants.TISCO,"200000");
-                change.put(Constants.MARUTI,"200000");
-                change.put(Constants.SBI,"200000");
-                change.put(Constants.REL,"200000");
+        //resetting remaining stocks
+        Stocks stocks=new Stocks();
+        stocks.setHUL(200000);
+        stocks.setITC(200000);
+        stocks.setMaruti(200000);
+        stocks.setRel(200000);
+        stocks.setTisco(200000);
+        stocks.setSBI(200000);
+        ref.child(Constants.STOCKS).setValue(stocks);
 
-
-                dataSnapshot.child(Constants.GAME_ID).child(Constants.STOCKS).getRef().updateChildren(change);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        //resetting rates of the stocks
+        Stocks rates=new Stocks();
+        rates.setHUL(2);
+        rates.setITC(2.5);
+        rates.setTisco(3.5);
+        rates.setMaruti(5.5);
+        rates.setSBI(7.5);
+        rates.setRel(8);
+        ref.child(Constants.RATES).setValue(rates);
     }
 
 }

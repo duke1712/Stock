@@ -7,10 +7,20 @@ public class Player {
     private int cash;
     private  String name;
     private long id;
+    Stocks stock;
 
+    public Stocks getStocks() {
+        return stock;
+    }
+
+    public void setStocks(Stocks stocks) {
+        this.stock = stocks;
+    }
 
     public Player() {
+        id=0;
         cash=60000;
+        stock=new Stocks();
     }
 
     public long getId() {
