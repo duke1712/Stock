@@ -6,9 +6,19 @@ package com.pritesh.stock.Model;
 public class Player {
     private int cash;
     private  String name;
+    private long id;
+
 
     public Player() {
         cash=60000;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getCash() {

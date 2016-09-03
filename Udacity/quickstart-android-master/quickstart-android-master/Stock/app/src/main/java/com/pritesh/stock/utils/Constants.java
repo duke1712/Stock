@@ -11,5 +11,10 @@ public class Constants {
     public static String SBI="SBI";
     public static String REL="Reliance";
     public static String CASH="cash:";
+    public static String GAME_ID="gameId";
+    public static String PLAYERS="players";
+    public static String STOCKS="stocks";
+    public static String RATES="rates";
+    public static String RATES_URL="";
 
 }
