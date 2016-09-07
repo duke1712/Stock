@@ -15,6 +15,6 @@ public class Constants {
     public static String PLAYERS="players";
     public static String STOCKS="stocks";
     public static String RATES="rates";
-    public static String RATES_URL="";
+    public static String TOTAL_PLAYERS="totalPlayers";
 
 }

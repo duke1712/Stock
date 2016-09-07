@@ -60,6 +60,8 @@ public class Menu extends AppCompatActivity {
         rates.setSBI(7.5);
         rates.setRel(8);
         ref.child(Constants.RATES).setValue(rates);
+        //total players to 0
+        ref.child(Constants.GAME_ID).child(Constants.TOTAL_PLAYERS).setValue(0);
     }
 
 }
